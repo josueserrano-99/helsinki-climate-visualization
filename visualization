@@ -1,0 +1,59 @@
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+# Build paths relative to this project so the script works after cloning it.
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_FILE = PROJECT_DIR / "data" / "helsinki-vantaa.txt"
+OUTPUT_DIR = PROJECT_DIR / "output"
+OUTPUT_FILE = OUTPUT_DIR / "temp_line_plot.png"
+
+# Read the tab-separated data, parse DATE, and use DATE as the index.
+data = pd.read_csv(
+    DATA_FILE,
+    sep="\t",
+    parse_dates=["DATE"],
+    index_col="DATE",
+)
+
+# Sort the dates before selecting a chronological range.
+data = data.sort_index()
+
+# Display the first five rows and the complete dataset size.
+print(data.head())
+print(f"Total rows: {len(data)}")
+
+# Select every month from January 1988 through December 2018.
+selection = data.loc["1988-01-01":"2018-12-31"]
+
+# Display the first five selected rows and confirm the selection size.
+print(selection.head())
+print(f"Number of selected rows: {len(selection)}")
+
+# Create the output folder if it does not already exist.
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+# Plot monthly Celsius temperatures with the required line style.
+ax = selection["TEMP_C"].plot(
+    figsize=(14, 6),
+    color="black",
+    linestyle="-",
+    marker="o",
+    markersize=3,
+    linewidth=1,
+    grid=True,
+)
+
+# Add the required title and axis labels.
+ax.set_title("Helsinki-Vantaa Airport")
+ax.set_xlabel("Time")
+ax.set_ylabel("Temperature (Celsius)")
+
+# Fit the labels inside the figure and save the chart.
+plt.tight_layout()
+plt.savefig(OUTPUT_FILE, dpi=300)
+plt.close()
+
+print(f"Saved chart to: {OUTPUT_FILE}")
