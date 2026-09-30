@@ -1,0 +1,57 @@
+# Helsinki-Vantaa Temperature Visualization
+
+This project uses monthly temperature data from Helsinki-Vantaa Airport to create a line chart covering January 1988 through December 2018.
+
+The Python script:
+
+- Loads the tab-separated data with pandas.
+- Parses the `DATE` column and uses it as the DataFrame index.
+- Sorts the dates before selecting the required range.
+- Selects 372 monthly records from January 1988 through December 2018.
+- Plots `TEMP_C` as a solid black line with round markers.
+- Saves the finished chart as `output/temp_line_plot.png`.
+
+## Project files
+
+```text
+helsinki-temperature-visualization/
+├── data/
+│   └── helsinki-vantaa.txt
+├── docs/
+│   └── Week 6 Assignment Visualization Corrected.docx
+├── output/
+│   └── temp_line_plot.png
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── week6_visualization.py
+```
+
+## Run the project
+
+Open a terminal in the project folder and create a virtual environment:
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python week6_visualization.py
+```
+
+On macOS or Linux, activate the environment with:
+
+```bash
+source .venv/bin/activate
+```
+
+The script prints the first five rows of the full dataset and selected period. It should report:
+Total rows: 706
+Number of selected rows: 372
+<img width="2100" height="900" alt="image" src="https://github.com/user-attachments/assets/ee31a187-e014-48a9-a827-2aa77feeb16c" />
+
+
+```text
+Total rows: 706
+Number of selected rows: 372
