@@ -56,22 +56,3 @@ Number of selected rows: 372
 ## Output
 
 ![Monthly Helsinki-Vantaa temperatures from 1988 through 2018](output/temp_line_plot.png)
-
-## Upload to GitHub
-
-Create an empty repository on GitHub without adding another README or `.gitignore`. Then run these commands from this project folder. Replace the example URL with the URL GitHub gives you:
-
-```powershell
-git commit -m "Add Helsinki-Vantaa temperature visualization"
-git remote add origin https://github.com/YOUR-USERNAME/helsinki-temperature-visualization.git
-git push -u origin main
-```
-
-If Git asks you to identify yourself before the commit, enter the name and email connected to your GitHub account:
-
-```powershell
-git config --global user.name "YOUR NAME"
-git config --global user.email "YOUR EMAIL"
-```
-
-The dataset and completed worksheet were supplied for the related course assignment. No separate dataset license was provided with the source files.
